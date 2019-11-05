@@ -1,0 +1,19 @@
+{
+  "id": "testsubject",
+  "owner_id": "1",
+  "email": "subject@example.com",
+  "first_name": "John",
+  "last_name": "Doe",
+  "verified": false,
+  "preferences": {
+    "privacy_policy": {
+      "value": true,
+      "consent_id": "de801ca9-abec-45e2-8f7c-729822cfffad"
+    },
+    "newsletter": {
+      "value": true,
+      "consent_id": "de801ca9-abec-45e2-8f7c-729822cfffad"
+    }
+  },
+  "timestamp": "2019-11-04T11:18:03+00:00"
+}
