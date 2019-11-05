@@ -63,7 +63,7 @@ module IubendaApi # :nodoc:
         # @example
         #   IubendaApi::ConsentSolution::Clients::Subject.new.create(id: 'testsubject', email: 'subject@example.com', first_name: "John", last_name: "Doe", verified: false) # -> Dry::Monads::Result::Success({:id=>"testsubject", :timestamp=>"2019-11-05T11:33:20.039Z"})
         #   IubendaApi::ConsentSolution::Clients::Subject.new.create(id: 'testsubject', email: 'subject@example.com', first_name: "John", last_name: "Doe", verified: false) # -> Dry::Monads::Result::Failure(#<ApiStruct::Errors::Client:0x007f7f699fc3c0 @status=#<HTTP::Response::Status 403 Forbidden>, @body={:message=>"Invalid authentication credentials"}>)
-        # @see https://www.iubenda.com/en/help/6484-consent-solution-http-api-documentation#list-subjects
+        # @see https://www.iubenda.com/en/help/6484-consent-solution-http-api-documentation#create-subjects
         def create(options = {})
           post(json: options)
         end
@@ -83,7 +83,7 @@ module IubendaApi # :nodoc:
         # @example
         #   IubendaApi::ConsentSolution::Clients::Subject.new.update('testsubject', email: 'john.doe@example.com') # -> Dry::Monads::Result::Success({:id=>"testsubject", :timestamp=>"2019-11-05T11:33:20.000+00:00"})
         #   IubendaApi::ConsentSolution::Clients::Subject.new.update('testsubject', email: 'john.doe@example.com') # -> Dry::Monads::Result::Failure(#<ApiStruct::Errors::Client:0x007f7f699fc3c0 @status=#<HTTP::Response::Status 403 Forbidden>, @body={:message=>"Invalid authentication credentials"}>)
-        # @see https://www.iubenda.com/en/help/6484-consent-solution-http-api-documentation#list-subjects
+        # @see https://www.iubenda.com/en/help/6484-consent-solution-http-api-documentation#update-subjects
         def update(id, options = {})
           put(id, json: options)
         end
