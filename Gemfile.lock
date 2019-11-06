@@ -2,8 +2,8 @@ PATH
   remote: .
   specs:
     iubenda_api (0.1.0)
-      api_struct (~> 1.0.5)
-      dry-configurable (~> 0.8.3)
+      api_struct
+      dry-configurable
 
 GEM
   remote: https://rubygems.org/
