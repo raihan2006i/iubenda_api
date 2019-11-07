@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["raihan2006i@gmail.com"]
 
   spec.summary       = %q{Iubenda ruby client for HTTP API}
-  # spec.homepage      = "Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/raihan2006i/iubenda_api"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
