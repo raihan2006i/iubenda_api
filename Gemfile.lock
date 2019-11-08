@@ -65,6 +65,8 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
     rspec-support (3.9.0)
+    rspec_junit_formatter (0.4.1)
+      rspec-core (>= 2, < 4, != 2.12.0)
     safe_yaml (1.0.5)
     unf (0.1.4)
       unf_ext
@@ -83,6 +85,7 @@ DEPENDENCIES
   iubenda_api!
   rake (~> 10.0)
   rspec (~> 3.0)
+  rspec_junit_formatter (~> 0.4.1)
   webmock (~> 3.7.6)
 
 BUNDLED WITH
