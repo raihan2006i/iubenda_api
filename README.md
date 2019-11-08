@@ -2,7 +2,7 @@
 
 This ruby client is an unofficial client
 
-[![CircleCI](https://circleci.com/gh/raihan2006i/iubenda_api.svg?style=svg)](https://circleci.com/gh/raihan2006i/iubenda_api)
+[![Gem Version](https://badge.fury.io/rb/iubenda_api.svg)](https://badge.fury.io/rb/iubenda_api) [![CircleCI](https://circleci.com/gh/raihan2006i/iubenda_api.svg?style=svg)](https://circleci.com/gh/raihan2006i/iubenda_api)
 
 ## Installation
 
