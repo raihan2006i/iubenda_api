@@ -22,7 +22,7 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - v1-dependencies-{{ checksum "iubenda_api.gemspec" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
@@ -34,7 +34,7 @@ jobs:
       - save_cache:
           paths:
             - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+          key: v1-dependencies-{{ checksum "iubenda_api.gemspec" }}
 
       # run tests!
       - run:
@@ -46,9 +46,7 @@ jobs:
 
             bundle exec rspec \
               --format progress \
-              --format RspecJunitFormatter \
               --out /tmp/test-results/rspec.xml \
-              --format progress \
               $TEST_FILES
 
       # collect reports
