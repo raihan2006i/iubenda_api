@@ -1,0 +1,26 @@
+[
+  {
+    "identifier": "privacy_policy",
+    "version": 3,
+    "timestamp": "2018-05-16T13:55:57Z",
+    "id": "1234_privacy_policy",
+    "owner_id": "1234",
+    "content": "privacy policy content"
+  },
+  {
+    "identifier": "privacy_policy",
+    "version": 2,
+    "timestamp": "2018-03-16T13:55:57Z",
+    "id": "1234_privacy_policy",
+    "owner_id": "1234",
+    "content": "privacy policy content"
+  },
+  {
+    "identifier": "privacy_policy",
+    "version": 1,
+    "timestamp": "2018-01-16T13:55:57Z",
+    "id": "1234_privacy_policy",
+    "owner_id": "1234",
+    "content": "privacy policy content"
+  }
+]

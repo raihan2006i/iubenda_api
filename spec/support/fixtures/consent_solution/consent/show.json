@@ -1,0 +1,39 @@
+{
+  "id": "de801ca9-abec-45e2-8f7c-729822cfffad",
+  "timestamp": "2018-05-04T14:52:26Z",
+  "checksum": "336dd0c5ee2253794b8cca6ee2b2fec835ab25a7097c4405014d02e4ffe4d5e5",
+  "owner": "1",
+  "subject": {
+    "id": "custom_subject_id",
+    "owner_id": "1",
+    "email": "subject@example.com",
+    "first_name": "John",
+    "last_name": "Doe",
+    "verified": false
+  },
+  "preferences": {
+    "privacy_policy": true,
+    "newsletter": false
+  },
+  "legal_notices": [
+    {
+      "identifier": "privacy_policy",
+      "version": 123
+    },
+    {
+      "identifier": "terms_and_conditions",
+      "version": 123
+    }
+  ],
+  "proofs": [
+    {
+      "content": "proof_1",
+      "form": "proof_1 form"
+    },
+    {
+      "content": "proof_2",
+      "form": "proof_2 form"
+    }
+  ],
+  "ip_address": null
+}

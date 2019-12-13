@@ -2,7 +2,7 @@ module IubendaApi # :nodoc:
   module ConsentSolution # :nodoc:
     module Clients # :nodoc:
 
-      # Endpoint wrapper class for Iubenda Subjects HTTP APIs
+      # Endpoint wrapper class for Iubenda Subject HTTP APIs
       # @see https://www.iubenda.com/en/help/6484-consent-solution-http-api-documentation#subjects-1
       class Subject < ApiStruct::Client
         consent_solution_api :subjects
@@ -13,8 +13,8 @@ module IubendaApi # :nodoc:
         # @return [Dry::Monads::Result::Success] if success
         # @return [Dry::Monads::Result::Failure] if failed
         # @example
-        #   IubendaApi::ConsentSolution::Clients::Subject.new.get('testsubject') # -> Dry::Monads::Result::Success({:id=>"testsubject", :email=>"subject@example.com", :first_name=>"John", :last_name=>"Doe", :verified=>false, :owner_id=>"1", :preferences=> {}, :timestamp=>"2019-11-04T17:30:58+00:00"})
-        #   IubendaApi::ConsentSolution::Clients::Subject.new.get('notfound') # -> Dry::Monads::Result::Failure(#<ApiStruct::Errors::Client:0x007ff1544606c0 @status=#<HTTP::Response::Status 404 Not Found>, @body={:status=>"not_found"}>)
+        #   IubendaApi::ConsentSolution::Clients::Subject.new.show('testsubject') # -> Dry::Monads::Result::Success({:id=>"testsubject", :email=>"subject@example.com", :first_name=>"John", :last_name=>"Doe", :verified=>false, :owner_id=>"1", :preferences=> {}, :timestamp=>"2019-11-04T17:30:58+00:00"})
+        #   IubendaApi::ConsentSolution::Clients::Subject.new.show('notfound') # -> Dry::Monads::Result::Failure(#<ApiStruct::Errors::Client:0x007ff1544606c0 @status=#<HTTP::Response::Status 404 Not Found>, @body={:status=>"not_found"}>)
         # @see https://www.iubenda.com/en/help/6484-consent-solution-http-api-documentation#get-subjects
         def show(id)
           get(id)
@@ -49,42 +49,38 @@ module IubendaApi # :nodoc:
 
         # Calls POST /subjects
         #
-        # @overload create
-        # @overload create(options)
-        #   @param [Hash] options options to send as subject attributes.
-        #   @option options [String] :id	auto-filled if not provided
-        #   @option options [String] :email	Optional
-        #   @option options [String] :first_name Optional
-        #   @option options [String] :last_name	Optional
-        #   @option options [String] :full_name	Optional
-        #   @option options [Boolean] :verified	Optional, Reserved field used to signal whether a subject is verified, for instance via the double opt-in method
+        # @param [Hash] options options to send as subject attributes.
+        # @option options [String] :id	auto-filled if not provided
+        # @option options [String] :email	Optional
+        # @option options [String] :first_name Optional
+        # @option options [String] :last_name	Optional
+        # @option options [String] :full_name	Optional
+        # @option options [Boolean] :verified	Optional, Reserved field used to signal whether a subject is verified, for instance via the double opt-in method
         # @return [Dry::Monads::Result::Success] if success
         # @return [Dry::Monads::Result::Failure] if failed
         # @example
         #   IubendaApi::ConsentSolution::Clients::Subject.new.create(id: 'testsubject', email: 'subject@example.com', first_name: "John", last_name: "Doe", verified: false) # -> Dry::Monads::Result::Success({:id=>"testsubject", :timestamp=>"2019-11-05T11:33:20.039Z"})
         #   IubendaApi::ConsentSolution::Clients::Subject.new.create(id: 'testsubject', email: 'subject@example.com', first_name: "John", last_name: "Doe", verified: false) # -> Dry::Monads::Result::Failure(#<ApiStruct::Errors::Client:0x007f7f699fc3c0 @status=#<HTTP::Response::Status 403 Forbidden>, @body={:message=>"Invalid authentication credentials"}>)
         # @see https://www.iubenda.com/en/help/6484-consent-solution-http-api-documentation#create-subjects
-        def create(options = {})
+        def create(options)
           post(json: options)
         end
 
         # Calls PUT /subjects/:id
         #
-        # @overload update(id)
-        # @overload update(id, options)
-        #   @param [Hash] options options to send as subject attributes.
-        #   @option options [String] :email	Optional
-        #   @option options [String] :first_name Optional
-        #   @option options [String] :last_name	Optional
-        #   @option options [String] :full_name	Optional
-        #   @option options [Boolean] :verified	Optional, Reserved field used to signal whether a subject is verified, for instance via the double opt-in method
+        # @param [Hash] options options to send as subject attributes.
+        # @option options [String] :email	Optional
+        # @option options [String] :first_name Optional
+        # @option options [String] :last_name	Optional
+        # @option options [String] :full_name	Optional
+        # @option options [Boolean] :verified	Optional, Reserved field used to signal whether a subject is verified, for instance via the double opt-in method
         # @return [Dry::Monads::Result::Success] if success
         # @return [Dry::Monads::Result::Failure] if failed
         # @example
         #   IubendaApi::ConsentSolution::Clients::Subject.new.update('testsubject', email: 'john.doe@example.com') # -> Dry::Monads::Result::Success({:id=>"testsubject", :timestamp=>"2019-11-05T11:33:20.000+00:00"})
         #   IubendaApi::ConsentSolution::Clients::Subject.new.update('testsubject', email: 'john.doe@example.com') # -> Dry::Monads::Result::Failure(#<ApiStruct::Errors::Client:0x007f7f699fc3c0 @status=#<HTTP::Response::Status 403 Forbidden>, @body={:message=>"Invalid authentication credentials"}>)
         # @see https://www.iubenda.com/en/help/6484-consent-solution-http-api-documentation#update-subjects
-        def update(id, options = {})
+        def update(id, options)
           put(id, json: options)
         end
       end
