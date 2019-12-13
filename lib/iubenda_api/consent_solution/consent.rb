@@ -11,8 +11,8 @@ module IubendaApi # :nodoc:
       #   @return [IubendaApi::ConsentSolution::Consent] if found
       #   @return [ApiStruct::Errors::Entity] if not found or failed
       #   @example
-      #     IubendaApi::ConsentSolution::Consent.get('00b654b3-ce4d-45c9-a8aa-9450551579c0') # -> #<IubendaApi::ConsentSolution::Consent id="00b654b3-ce4d-45c9-a8aa-9450551579c0", ...>
-      #     IubendaApi::ConsentSolution::Consent.get('notfound') # -> #<ApiStruct::Errors::Entity body=#<Hashie::Mash message="Invalid authentication credentials"> error=true status=#<HTTP::Response::Status 403 Forbidden>>
+      #     IubendaApi::ConsentSolution::Consent.show('00b654b3-ce4d-45c9-a8aa-9450551579c0') # -> #<IubendaApi::ConsentSolution::Consent id="00b654b3-ce4d-45c9-a8aa-9450551579c0", ...>
+      #     IubendaApi::ConsentSolution::Consent.show('notfound') # -> #<ApiStruct::Errors::Entity body=#<Hashie::Mash message="Invalid authentication credentials"> error=true status=#<HTTP::Response::Status 403 Forbidden>>
       #   @see IubendaApi::ConsentSolution::Clients::Consent#show
       #
       #

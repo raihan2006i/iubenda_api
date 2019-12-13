@@ -25,10 +25,10 @@ Or install it yourself as:
 This gem expects that you have already set `IUBENDA_API_KEY` environment variable. Use your Iubenda `Private key`
 
 ```ruby
-id = 'testsubject'
-
+# Subject
+subject_id = 'testsubject'
 IubendaApi::ConsentSolution::Subject.create(
-  id: id,
+  id: subject_id,
   email: "john.doe@example.com",
   first_name: "John",
   last_name: "Doe",
@@ -39,6 +39,75 @@ IubendaApi::ConsentSolution::Subject.create(
 IubendaApi::ConsentSolution::Subject.show(id) # -> #<IubendaApi::ConsentSolution::Subject email="john.doe@example.com" first_name="John" full_name=nil id="testsubject" last_name="Doe" owner_id="10240" preferences=nil timestamp="2019-11-05T11:33:20+00:00" verified=false>
 IubendaApi::ConsentSolution::Subject.list # -> [#<IubendaApi::ConsentSolution::Subject email="john.doe@example.com" first_name="John" full_name=nil id="testsubject" last_name="Doe" owner_id="10240" preferences=nil timestamp="2019-11-05T11:33:20+00:00" verified=false>, ...]
 IubendaApi::ConsentSolution::Subject.update(id, email: "john.snow@example.com", first_name: "John", last_name: "Snow", full_name: 'John Snow') # -> #<IubendaApi::ConsentSolution::Subject id="testsubject" timestamp="2019-11-05T11:33:20.039Z">
+
+# Consent
+IubendaApi::ConsentSolution::Consent.create(
+  subject: {
+    id: 'testsubject',
+    email: 'subject@example.com',
+    first_name: "John",
+    last_name: "Doe",
+    verified: false
+  },
+  preferences: {
+    newsletter: false,
+    privacy_policy: true
+  }
+) # -> #<IubendaApi::ConsentSolution::Consent id="00b654b3-ce4d-45c9-a8aa-9450551579c0" timestamp="2019-11-05T11:33:20.039Z">
+
+IubendaApi::ConsentSolution::Consent.show('00b654b3-ce4d-45c9-a8aa-9450551579c0') # -> #<IubendaApi::ConsentSolution::Consent id="00b654b3-ce4d-45c9-a8aa-9450551579c0", ...>
+IubendaApi::ConsentSolution::Consent.list(limit: 1) # -> [#<IubendaApi::ConsentSolution::Consent id="00b654b3-ce4d-45c9-a8aa-9450551579c0", ...>, ...]
+
+# Legal Notice
+# Single legal notice without multi-language content:
+IubendaApi::ConsentSolution::LegalNotice.create(
+  identifier: "privacy_policy",
+  content: "privacy policy content"
+) # -> #<IubendaApi::ConsentSolution::LegalNotice identifier="privacy_policy" version=1 timestamp="2019-12-13T14:56:00Z">
+ 
+# Single legal notice with multi-language content:
+IubendaApi::ConsentSolution::LegalNotice.create(
+  identifier: "privacy_policy",
+  content: {
+   en: "privacy policy content",
+   it: "contenuto della privacy policy"
+  }
+) # -> #<IubendaApi::ConsentSolution::LegalNotice identifier="privacy_policy" version=1 timestamp="2019-12-13T14:56:00Z">
+
+# Multiple legal notice without multi-language content:
+IubendaApi::ConsentSolution::LegalNotice.create_multiple([
+  {
+    identifier: "privacy_policy",
+    content: "privacy policy content"
+  },
+  {
+    identifier: "cookie_policy",
+    content: "cookie policy content"
+  }
+]) # -> [#<IubendaApi::ConsentSolution::LegalNotice identifier="privacy_policy" version=1 timestamp="2019-12-13T14:56:00Z">, #<IubendaApi::ConsentSolution::LegalNotice identifier="cookie_policy" version=1 timestamp="2019-12-13T14:56:00Z">]
+
+# Multiple legal notice with multi-language content:
+IubendaApi::ConsentSolution::LegalNotice.create_multiple([
+  {
+    identifier: "privacy_policy",
+    content: {
+      en: "privacy policy content",
+      it: "contenuto della privacy policy"
+    }
+  },
+  {
+    identifier: "cookie_policy",
+    content: {
+      en: "cookie policy content",
+      it: "contenuto della cookie policy"
+    }
+  },
+]) # -> [#<IubendaApi::ConsentSolution::LegalNotice identifier="privacy_policy" version=1 timestamp="2019-12-13T14:56:00Z">, #<IubendaApi::ConsentSolution::LegalNotice identifier="cookie_policy" version=1 timestamp="2019-12-13T14:56:00Z">]
+
+IubendaApi::ConsentSolution::LegalNotice.versions('privacy_policy') # -> [#<IubendaApi::ConsentSolution::LegalNotice identifier="privacy_policy" version=1 timestamp="2019-11-07T16:18:05+00:00" content=#<Hashie::Mash>, ...]
+IubendaApi::ConsentSolution::LegalNotice.version('privacy_policy', 1) # -> #<IubendaApi::ConsentSolution::LegalNotice identifier="privacy_policy" version=1 timestamp="2019-11-07T16:18:05+00:00" content=#<Hashie::Mash> 
+IubendaApi::ConsentSolution::LegalNotice.list(limit: 1) # -> [#<IubendaApi::ConsentSolution::LegalNotice content=#<Hashie::Mash it="https://example.com/privacy_policy.pdf"> id="10298_privacy_policy" identifier="privacy_policy" owner_id="1000" timestamp="2019-11-22T14:12:06+00:00" version=1>, ...]
+
 ```
 
 ## Development

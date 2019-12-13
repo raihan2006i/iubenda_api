@@ -73,20 +73,35 @@ module IubendaApi # :nodoc:
       # @return [Array<IubendaApi::ConsentSolution::LegalNotice>] if success
       # @return [ApiStruct::Errors::Entity] if not created or failed
       # @example
-      #   # Without multi-language content:
+      #   # Multiple legal notice without multi-language content:
       #   IubendaApi::ConsentSolution::LegalNotice.create_multiple([
-      #     identifier: "privacy_policy",
-      #     content: "privacy policy content"
-      #   ]) # -> [#<IubendaApi::ConsentSolution::LegalNotice identifier="privacy_policy" version=1 timestamp="2019-12-13T14:56:00Z">]
-      #
-      #   # With multi-language content:
-      #   IubendaApi::ConsentSolution::LegalNotice.create_multiple([
-      #     identifier: "privacy_policy",
-      #     content: {
-      #       en: "privacy policy content",
-      #       it: "contenuto della privacy policy"
+      #     {
+      #       identifier: "privacy_policy",
+      #       content: "privacy policy content"
+      #     },
+      #     {
+      #       identifier: "cookie_policy",
+      #       content: "cookie policy content"
       #     }
-      #   ]) # -> [#<IubendaApi::ConsentSolution::LegalNotice identifier="privacy_policy" version=1 timestamp="2019-12-13T14:56:00Z">]
+      #   ]) # -> [#<IubendaApi::ConsentSolution::LegalNotice identifier="privacy_policy" version=1 timestamp="2019-12-13T14:56:00Z">, #<IubendaApi::ConsentSolution::LegalNotice identifier="cookie_policy" version=1 timestamp="2019-12-13T14:56:00Z">]
+      #
+      #   # Multiple legal notice with multi-language content:
+      #   IubendaApi::ConsentSolution::LegalNotice.create_multiple([
+      #     {
+      #       identifier: "privacy_policy",
+      #       content: {
+      #         en: "privacy policy content",
+      #         it: "contenuto della privacy policy"
+      #       }
+      #     },
+      #     {
+      #       identifier: "cookie_policy",
+      #       content: {
+      #         en: "cookie policy content",
+      #         it: "contenuto della cookie policy"
+      #       }
+      #     },
+      #   ]) # -> [#<IubendaApi::ConsentSolution::LegalNotice identifier="privacy_policy" version=1 timestamp="2019-12-13T14:56:00Z">, #<IubendaApi::ConsentSolution::LegalNotice identifier="cookie_policy" version=1 timestamp="2019-12-13T14:56:00Z">]
       #
       #   # Error
       #   IubendaApi::ConsentSolution::LegalNotice.create_multiple([identifier: 'privacy_policy', content: 'privacy policy content']) # -> #<ApiStruct::Errors::Entity body=#<Hashie::Mash message="Invalid authentication credentials"> error=true status=#<HTTP::Response::Status 403 Forbidden>>
